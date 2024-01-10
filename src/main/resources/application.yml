@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://35.222.213.142:5432/fdDatabase
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
