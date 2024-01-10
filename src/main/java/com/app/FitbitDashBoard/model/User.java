@@ -2,6 +2,7 @@ package com.app.FitbitDashBoard.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.validation.constraints.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 
 @Data
@@ -23,8 +25,8 @@ import java.util.List;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @NotBlank(message = "Name is required")
     private String name;
