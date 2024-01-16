@@ -32,7 +32,8 @@ public class AuthenticationService {
 
     public ResponseEntity<User> register(RegisterRequest request) {
         var user = User.builder()
-                .name(request.getName())
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
                 .phone(request.getPhone())
                 .fitbitUrl(request.getFitbitUrl())
                 .email(request.getEmail())

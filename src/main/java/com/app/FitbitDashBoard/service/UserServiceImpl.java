@@ -35,7 +35,8 @@ public class UserServiceImpl implements UserService {
 
         if (existingUser != null) {
             // updating fields that are allowed to be updated
-            existingUser.setName(updatedUser.getName());
+            existingUser.setFirstName(updatedUser.getFirstName());
+            existingUser.setLastName(updatedUser.getLastName());
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setPhone(updatedUser.getPhone());
             existingUser.setPassword(updatedUser.getPassword());
