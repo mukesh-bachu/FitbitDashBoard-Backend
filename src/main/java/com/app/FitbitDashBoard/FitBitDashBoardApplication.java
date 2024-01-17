@@ -9,5 +9,4 @@ public class FitBitDashBoardApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FitBitDashBoardApplication.class, args);
 	}
-
 }

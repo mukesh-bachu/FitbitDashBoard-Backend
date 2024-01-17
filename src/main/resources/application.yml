@@ -19,5 +19,18 @@ application:
     jwt:
       secret-key: f1545ae99807bdd38427fe5e12aefb1c0b0292fbddd2aa0505c5d35d1eca934ea7126e870ffb1118472f4e0a2dac781e163104c6da44c2289f82aa86884854a8
       expiration: 86400000 # a day
-      refresh-token:
-        expiration: 604800000 # 7 days
+    clientId: 23RNF6
+    clientSecret: 7fd23b5474999f7e3eac1abfac59f750
+
+
+fitbit:
+  clientId: 23RNF6
+  clientSecret: 7fd23b5474999f7e3eac1abfac59f750
+  redirectUri: http://localhost:8080/fitbit
+  CHARACTERS: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~
+  VERIFIER_LENGTH: 64
+  scope: activity%20heartrate%20location%20nutrition%20oxygen_saturation%20profile%20respiratory_rate%20settings%20sleep%20social%20temperature%20weight
+
+
+server:
+  port : 8080
