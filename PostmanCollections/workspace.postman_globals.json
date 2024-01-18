@@ -1,0 +1,226 @@
+{
+	"id": "10d0d0ce-154c-497f-8776-163a36a33a1f",
+	"values": [
+		{
+			"key": "authTokeF",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMjdHNUwiLCJzdWIiOiJCV1k2VlgiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd251dCB3cHJvIHdzbGUgd2VjZyB3c29jIHdhY3Qgd294eSB3dGVtIHd3ZWkgd2NmIHdzZXQgd2xvYyB3cmVzIiwiZXhwIjoxNzA1NDM5MDMxLCJpYXQiOjE3MDUzNTI2MzF9.eegFKp5B_a76-TbRGOgUJM9E-2LZ3gBA96z99uAqlZY",
+			"enabled": true
+		},
+		{
+			"key": "currentDate",
+			"value": "2024-01-16",
+			"enabled": true
+		},
+		{
+			"key": "authCodeToGetToken",
+			"value": "MjNSTkY2OjdmZDIzYjU0NzQ5OTlmN2UzZWFjMWFiZmFjNTlmNzUw",
+			"enabled": true
+		},
+		{
+			"key": "clientId",
+			"value": "23RNF6",
+			"enabled": true
+		},
+		{
+			"key": "authCode4Token",
+			"value": "e1e8652ece5e9baadced8eab4beed503226f69cb",
+			"enabled": true
+		},
+		{
+			"key": "codeVerifiere",
+			"value": "073i6c0433051e2x1c03490x554m693e4s0a002b5x0",
+			"enabled": true
+		},
+		{
+			"key": "startDate",
+			"value": "2024-01-15",
+			"enabled": true
+		},
+		{
+			"key": "endDate",
+			"value": "2024-01-15",
+			"enabled": true
+		},
+		{
+			"key": "minDuaration",
+			"value": "8",
+			"enabled": true
+		},
+		{
+			"key": "duration",
+			"value": "300000",
+			"enabled": true
+		},
+		{
+			"key": "startTime",
+			"value": "00%3A00",
+			"enabled": true
+		},
+		{
+			"key": "interval",
+			"value": "1min",
+			"enabled": true
+		},
+		{
+			"key": "endTime",
+			"value": "11%3A59",
+			"enabled": true
+		},
+		{
+			"key": "interval1",
+			"value": "1m",
+			"enabled": true
+		},
+		{
+			"key": "code_verifier",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "code_challenge",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "auth-code",
+			"value": "0760697d136fe8713024585c6b2954a1fc812389",
+			"enabled": true
+		},
+		{
+			"key": "base64KS",
+			"value": "MjNSTkY2OjdmZDIzYjU0NzQ5OTlmN2UzZWFjMWFiZmFjNTlmNzUw",
+			"enabled": true
+		},
+		{
+			"key": "redirectUri",
+			"value": "http://localhost:8080/fitbit",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "scope",
+			"value": "activity%20heartrate%20location%20nutrition%20oxygen_saturation%20profile%20respiratory_rate%20settings%20sleep%20social%20temperature%20weight",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "clientSecret",
+			"value": "7fd23b5474999f7e3eac1abfac59f750",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "authorizationUrl",
+			"value": "https://www.fitbit.com/oauth2/authorize",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "weight",
+			"value": "weight",
+			"enabled": true
+		},
+		{
+			"key": "bodyParam",
+			"value": "weight",
+			"enabled": true
+		},
+		{
+			"key": "period",
+			"value": "7d",
+			"enabled": true
+		},
+		{
+			"key": "goal",
+			"value": "fat",
+			"enabled": true
+		},
+		{
+			"key": "detail-level",
+			"value": "1min",
+			"enabled": true
+		},
+		{
+			"key": "resource-path",
+			"value": "steps",
+			"enabled": true
+		},
+		{
+			"key": "sort",
+			"value": "asc",
+			"enabled": true
+		},
+		{
+			"key": "offset",
+			"value": "3",
+			"enabled": true
+		},
+		{
+			"key": "limit",
+			"value": "10",
+			"enabled": true
+		},
+		{
+			"key": "log-id",
+			"value": "1",
+			"enabled": true
+		},
+		{
+			"key": "boolean",
+			"value": "true",
+			"enabled": true
+		},
+		{
+			"key": "activity-id",
+			"value": "1",
+			"enabled": true
+		},
+		{
+			"key": "n-resource-path",
+			"value": "caloriesIn",
+			"enabled": true
+		},
+		{
+			"key": "intensity",
+			"value": "MAINTENANCE",
+			"enabled": true
+		},
+		{
+			"key": "pboolean",
+			"value": "true",
+			"enabled": true
+		},
+		{
+			"key": "n-boolean",
+			"value": "true",
+			"enabled": true
+		},
+		{
+			"key": "calories",
+			"value": "150",
+			"enabled": true
+		},
+		{
+			"key": "encodeed-food-id",
+			"value": "1",
+			"enabled": true
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "id",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2024-01-18T19:54:13.275Z",
+	"_postman_exported_using": "Postman/10.22.2"
+}
