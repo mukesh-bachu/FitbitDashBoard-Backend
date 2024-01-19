@@ -217,10 +217,52 @@
 			"value": "",
 			"type": "default",
 			"enabled": true
+		},
+		{
+			"key": "refresh-auth",
+			"value": "MjNSTkY2OjdmZDIzYjU0NzQ5OTlmN2UzZWFjMWFiZmFjNTlmNzUw",
+			"enabled": true
+		},
+		{
+			"key": "refresh-token",
+			"value": "75a8957edace5a4f4959078b2123d2f07fec77ad419683569d543e26e64ca775",
+			"enabled": true
+		},
+		{
+			"key": "refresh-token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "swagger-client",
+			"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMjdHNUwiLCJzdWIiOiJCV1k2VlgiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd251dCB3cHJvIHdzbGUgd2VjZyB3c29jIHdhY3Qgd294eSB3dGVtIHd3ZWkgd2NmIHdzZXQgd2xvYyB3cmVzIiwiZXhwIjoxNzA1NzYzODE2LCJpYXQiOjE3MDU2Nzc0MTZ9._dBhpMDmjug73DNQ_4LVqQRHMh-P1EXW0b0Naxrodyk",
+			"enabled": true
+		},
+		{
+			"key": "activityId",
+			"value": "90013",
+			"enabled": true
+		},
+		{
+			"key": "activity-log-id",
+			"value": "61031839224",
+			"enabled": true
+		},
+		{
+			"key": "tracker-id",
+			"value": "2538271323",
+			"enabled": true
+		},
+		{
+			"key": "tracker-id",
+			"value": "",
+			"type": "any",
+			"enabled": true
 		}
 	],
 	"name": "Globals",
 	"_postman_variable_scope": "globals",
-	"_postman_exported_at": "2024-01-18T19:54:13.275Z",
+	"_postman_exported_at": "2024-01-19T16:30:30.501Z",
 	"_postman_exported_using": "Postman/10.22.2"
 }

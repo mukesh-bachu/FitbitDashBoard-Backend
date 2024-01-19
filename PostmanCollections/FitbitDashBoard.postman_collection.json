@@ -302,7 +302,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/fitbit?code=a7f4094e65369ed945107ce8f92c069c542a3740&state=27c.ELb1vZrRyre4#_=_",
+							"raw": "http://localhost:8080/fitbit?code=1d7723c227e395f0ffc758257898059e20b202b7&state=d.b9s0vd95ZtKD6r#_=_",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -314,11 +314,11 @@
 							"query": [
 								{
 									"key": "code",
-									"value": "a7f4094e65369ed945107ce8f92c069c542a3740"
+									"value": "1d7723c227e395f0ffc758257898059e20b202b7"
 								},
 								{
 									"key": "state",
-									"value": "27c.ELb1vZrRyre4"
+									"value": "d.b9s0vd95ZtKD6r"
 								}
 							],
 							"hash": "_=_"

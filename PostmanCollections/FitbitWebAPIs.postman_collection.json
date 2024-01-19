@@ -49,6 +49,9 @@
 									"if (jsonData && jsonData.access_token) {",
 									"    pm.globals.set(\"authTokeF\", jsonData.access_token);",
 									"}",
+									"if (jsonData && jsonData.refresh_token) {",
+									"    pm.globals.set(\"refresh-token\", jsonData.refresh_token);",
+									"}",
 									""
 								],
 								"type": "text/javascript"
@@ -69,7 +72,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/fitbit?code=fb1291cc927c2d373c936cf17807dd3804f2bfbf&state=yRAzSBAbAvNIUrK1#_=_",
+							"raw": "http://localhost:8080/fitbit?code=7f2aa6031d5f03453ad8703cba0662d558ea0c2e&state=5s-zhZlfCtPaOSog#_=_",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -81,14 +84,82 @@
 							"query": [
 								{
 									"key": "code",
-									"value": "fb1291cc927c2d373c936cf17807dd3804f2bfbf"
+									"value": "7f2aa6031d5f03453ad8703cba0662d558ea0c2e"
 								},
 								{
 									"key": "state",
-									"value": "yRAzSBAbAvNIUrK1"
+									"value": "5s-zhZlfCtPaOSog"
 								}
 							],
 							"hash": "_=_"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03 Get Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData && jsonData.access_token) {",
+									"    pm.globals.set(\"authTokeF\", jsonData.access_token);",
+									"}",
+									"if (jsonData && jsonData.refresh_token) {",
+									"    pm.globals.set(\"refresh-token\", jsonData.refresh_token);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic {{refresh-auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{clientId}}",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh-token}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.fitbit.com/oauth2/token",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fitbit",
+								"com"
+							],
+							"path": [
+								"oauth2",
+								"token"
+							]
 						}
 					},
 					"response": []
@@ -2829,6 +2900,228 @@
 								"description": "Retreives a user's current daily or weekly activity goals using measurement units as defined in the unit system, which corresponds to the Accept-Language header provided."
 							},
 							"response": []
+						},
+						{
+							"name": "11 POST Log Activity",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"if (jsonData && jsonData.logId) {",
+											"    pm.globals.set(\"activity-log-id\", jsonData.logId);",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{authTokeF}}"
+									}
+								],
+								"url": {
+									"raw": "https://api.fitbit.com/1/user/-/activities.json?activityId={{activityId}}&manualCalories=100&startTime={{startTime}}&durationMillis=1000&date={{currentDate}}&distance=1000",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fitbit",
+										"com"
+									],
+									"path": [
+										"1",
+										"user",
+										"-",
+										"activities.json"
+									],
+									"query": [
+										{
+											"key": "activityId",
+											"value": "{{activityId}}"
+										},
+										{
+											"key": "manualCalories",
+											"value": "100"
+										},
+										{
+											"key": "startTime",
+											"value": "{{startTime}}"
+										},
+										{
+											"key": "durationMillis",
+											"value": "1000"
+										},
+										{
+											"key": "date",
+											"value": "{{currentDate}}"
+										},
+										{
+											"key": "distance",
+											"value": "1000"
+										}
+									]
+								},
+								"description": "The Log Activity endpoint creates log entry for an activity or user's private custom activity using units in the unit system which corresponds to the Accept-Language header provided (or using optional custom distanceUnit) and get a response in the format requested."
+							},
+							"response": []
+						},
+						{
+							"name": "12 Delete Activity Log",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{authTokeF}}"
+									}
+								],
+								"url": {
+									"raw": "https://api.fitbit.com/1/user/-/activities/{{activity-log-id}}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fitbit",
+										"com"
+									],
+									"path": [
+										"1",
+										"user",
+										"-",
+										"activities",
+										"{{activity-log-id}}.json"
+									]
+								},
+								"description": "Deletes a user's activity log entry with the given ID."
+							},
+							"response": []
+						},
+						{
+							"name": "13 Delete Favorite Activity",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{authTokeF}}"
+									}
+								],
+								"url": {
+									"raw": "https://api.fitbit.com/1/user/-/activities/favorite/90009.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fitbit",
+										"com"
+									],
+									"path": [
+										"1",
+										"user",
+										"-",
+										"activities",
+										"favorite",
+										"90009.json"
+									]
+								},
+								"description": "Removes the activity with the given ID from a user's list of favorite activities."
+							},
+							"response": []
+						},
+						{
+							"name": "14 Add Favorite Activity",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{authTokeF}}"
+									}
+								],
+								"url": {
+									"raw": "https://api.fitbit.com/1/user/-/activities/favorite/90009.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fitbit",
+										"com"
+									],
+									"path": [
+										"1",
+										"user",
+										"-",
+										"activities",
+										"favorite",
+										"90009.json"
+									]
+								},
+								"description": "Adds the activity with the given ID to user's list of favorite activities."
+							},
+							"response": []
+						},
+						{
+							"name": "15 <> Update Activity Goals",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{authTokeF}}"
+									}
+								],
+								"url": {
+									"raw": "https://api.fitbit.com/1/user/-/activities/goals/daily.json?type=Walking&value=5",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fitbit",
+										"com"
+									],
+									"path": [
+										"1",
+										"user",
+										"-",
+										"activities",
+										"goals",
+										"daily.json"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "Walking"
+										},
+										{
+											"key": "value",
+											"value": "5"
+										}
+									]
+								},
+								"description": "Updates a user's daily or weekly activity goals and returns a response using units in the unit system which corresponds to the Accept-Language header provided."
+							},
+							"response": []
 						}
 					],
 					"description": "The Activity endpoints are used to query and/or modify a Fitbit user's daily activity data."
@@ -3468,6 +3761,249 @@
 				}
 			],
 			"description": "The Friends endpoints display information about the specified user's friends and the friend's leaderboard."
+		},
+		{
+			"name": "15 Devices",
+			"item": [
+				{
+					"name": "01 Get Devices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if(jsonData && jsonData.id){",
+									"    pm.globals.set(\"tracker-id\", jsonData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{authTokeF}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.fitbit.com/1/user/-/devices.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fitbit",
+								"com"
+							],
+							"path": [
+								"1",
+								"user",
+								"-",
+								"devices.json"
+							]
+						},
+						"description": "Returns a list of the Fitbit devices connected to a user's account."
+					},
+					"response": []
+				},
+				{
+					"name": "02 Get Alarms",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{authTokeF}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.fitbit.com/1/user/-/devices/tracker/{{tracker-id}}/alarms.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fitbit",
+								"com"
+							],
+							"path": [
+								"1",
+								"user",
+								"-",
+								"devices",
+								"tracker",
+								"{{tracker-id}}",
+								"alarms.json"
+							]
+						},
+						"description": "Returns alarms for a device"
+					},
+					"response": []
+				},
+				{
+					"name": "03 Add Alarm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMjdHNUwiLCJzdWIiOiJCV1k2VlgiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd251dCB3cHJvIHdzbGUgd2VjZyB3c29jIHdhY3Qgd294eSB3dGVtIHd3ZWkgd2NmIHdzZXQgd2xvYyB3cmVzIiwiZXhwIjoxNzA1NzYzODE2LCJpYXQiOjE3MDU2Nzc0MTZ9._dBhpMDmjug73DNQ_4LVqQRHMh-P1EXW0b0Naxrodyk"
+							}
+						],
+						"url": {
+							"raw": "https://api.fitbit.com/1/user/-/devices/tracker/{{tracker-id}}/alarms.json?time=07%3A15-08%3A00&enabled=false&recurring=true&weekDays=MONDAY",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fitbit",
+								"com"
+							],
+							"path": [
+								"1",
+								"user",
+								"-",
+								"devices",
+								"tracker",
+								"{{tracker-id}}",
+								"alarms.json"
+							],
+							"query": [
+								{
+									"key": "time",
+									"value": "07%3A15-08%3A00"
+								},
+								{
+									"key": "enabled",
+									"value": "false"
+								},
+								{
+									"key": "recurring",
+									"value": "true"
+								},
+								{
+									"key": "weekDays",
+									"value": "MONDAY"
+								}
+							]
+						},
+						"description": "Adds the alarm settings to a given ID for a given device."
+					},
+					"response": []
+				},
+				{
+					"name": "04 Update Alarm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{authTokeF}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.fitbit.com/1/user/-/devices/tracker/{{tracker-id}}/alarms/1.json?time=07%3A15-08%3A00&enabled=false&recurring=true&weekDays=MONDAY&snoozeLength=10&snoozeCount=1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fitbit",
+								"com"
+							],
+							"path": [
+								"1",
+								"user",
+								"-",
+								"devices",
+								"tracker",
+								"{{tracker-id}}",
+								"alarms",
+								"1.json"
+							],
+							"query": [
+								{
+									"key": "time",
+									"value": "07%3A15-08%3A00"
+								},
+								{
+									"key": "enabled",
+									"value": "false"
+								},
+								{
+									"key": "recurring",
+									"value": "true"
+								},
+								{
+									"key": "weekDays",
+									"value": "MONDAY"
+								},
+								{
+									"key": "snoozeLength",
+									"value": "10"
+								},
+								{
+									"key": "snoozeCount",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Updates the alarm entry with a given ID for a given device. It also gets a response in the format requested."
+					},
+					"response": []
+				},
+				{
+					"name": "05 Delete Alarm",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{authTokeF}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.fitbit.com/1/user/-/devices/tracker/{{tracker-id}}/alarms/1.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fitbit",
+								"com"
+							],
+							"path": [
+								"1",
+								"user",
+								"-",
+								"devices",
+								"tracker",
+								"{{tracker-id}}",
+								"alarms",
+								"1.json"
+							]
+						},
+						"description": "Deletes the user's device alarm entry with the given ID for a given device."
+					},
+					"response": []
+				}
+			],
+			"description": "The Devices endpoints displays information about the devices paired to a user's account."
 		}
 	],
 	"event": [
