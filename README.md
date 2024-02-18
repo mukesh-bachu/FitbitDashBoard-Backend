@@ -16,7 +16,7 @@ Features:
 
 
 Technologies:
-  1. Spring Boot 3.0
+  1. Spring Boot 3.0 
   2. Spring Security
   3. JSON Web Tokens (JWT)
   4. BCrypt
